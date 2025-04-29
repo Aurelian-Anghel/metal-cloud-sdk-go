@@ -148,7 +148,9 @@ func (c *Client) ServerTypes(bOnlyAvailable bool) (*map[int]ServerType, error) {
 	resp, err := c.rpcClient.Call(
 		"server_types",
 		nil,
-		bOnlyAvailable,
+		map[string]interface{}{
+			"only_available": bOnlyAvailable,
+		},
 	)
 
 	if err != nil {
